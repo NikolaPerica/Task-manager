@@ -57,8 +57,7 @@ function Sidebar() {
               fs={"1.2rem"}
               icon={logout}
               click={() => {
-                console.log("CLICK");
-                signOut(() => router.push("/signin"));
+                console.log("CLICK");                signOut(() => router.push("/signin"));
               }}
         />
             </div>
