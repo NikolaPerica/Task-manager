@@ -23,7 +23,7 @@ export const GlobalProvider = ({ children }) => {
         
         try{
             const res=await axios.get("/api/tasks");
-            console.log(res.data)
+          //  console.log(res.data)
             setTasks(res.data)
             setIsLoading(false)
         }
