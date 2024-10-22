@@ -41,7 +41,7 @@ function Sidebar() {
             <ul className="nav-items ">
                 {menu.map((item)=>{
                     const link=item.link;
-                    return <li className={`nav-item ${pathname === link ? "active": ""}`} onClick={()=>{handleClick(link)}}>
+                    return <li key={item.id} className={`nav-item ${pathname === link ? "active": ""}`} onClick={()=>{handleClick(link)}}>
                         {item.icon}
                         <Link href={link}>{item.title}</Link>
                     </li>
