@@ -12,7 +12,7 @@ interface Props {
 }
 
 function Tasks({ title, tasks }: Props) {
-  const { theme } = useGlobalState();
+  const { theme, isLoading } = useGlobalState();
 
   // Safeguard to check if tasks is an array
   const isTasksArray = Array.isArray(tasks);
@@ -23,7 +23,7 @@ function Tasks({ title, tasks }: Props) {
       <h1>{title}</h1>
 
       <div className="tasks grid">
-        {isTasksArray ? (
+        {
           tasks.map((task) => (
             <TaskItem
             key={task.id}
@@ -34,9 +34,7 @@ function Tasks({ title, tasks }: Props) {
             id={task.id}
           />
           ))
-        ) : (
-          <p>No tasks available or invalid data format.</p>
-        )}
+        }
         <button className="create-task">{plus}Add new task</button>
       </div>
     </TaskStyled>
