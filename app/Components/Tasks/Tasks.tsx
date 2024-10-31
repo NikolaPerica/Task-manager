@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import CreateContent from '../Modals/CreateContent';
 import TaskItem from '../TaskItem/TaskItem';
 import { plus } from '@/app/utils/Icons';
+import Modal from '../Modals/Modal';
 
 interface Props {
   title: string;
@@ -12,14 +13,15 @@ interface Props {
 }
 
 function Tasks({ title, tasks }: Props) {
-  const { theme, isLoading } = useGlobalState();
+  const { theme, isLoading, openModal, modal } = useGlobalState();
 
   // Safeguard to check if tasks is an array
   const isTasksArray = Array.isArray(tasks);
-
+  console.log(modal)
   return (
     <TaskStyled theme={theme}>
       {/* <CreateContent /> */}
+      {modal && <Modal content={<CreateContent/>}/>}
       <h1>{title}</h1>
 
       <div className="tasks grid">
@@ -35,7 +37,7 @@ function Tasks({ title, tasks }: Props) {
           />
           ))
         }
-        <button className="create-task">{plus}Add new task</button>
+        <button className="create-task" onClick={openModal}>{plus}Add new task</button>
       </div>
     </TaskStyled>
   );
