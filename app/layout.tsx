@@ -4,13 +4,9 @@ import "./globals.css";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import GlobalStyleProvider from "./providers/GlobalStyleProvider";
 import ContextProvider from "./providers/ContextProvider";
-import {
-  ClerkProvider,
-  SignedIn,
-  SignedOut,
-  //auth,
-} from "@clerk/nextjs";
+import { ClerkProvider, useAuth } from "@clerk/nextjs";
 import NextTopLoader from "nextjs-toploader";
+import { useEffect, useState } from "react";
 
 const nunito = Nunito({
   weight: ["400", "500", "600", "700", "800"],
@@ -27,6 +23,15 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const { isSignedIn, isLoaded } = useAuth();
+  const [showSidebar, setShowSidebar] = useState(false);
+
+  useEffect(() => {
+    if (isLoaded) {
+      setShowSidebar(isSignedIn);
+    }
+  }, [isSignedIn, isLoaded]);
+
   return (
     <ClerkProvider>
       <html lang="en">
@@ -47,9 +52,7 @@ export default function RootLayout({
           />
           <ContextProvider>
             <GlobalStyleProvider>
-              <SignedIn>
-                <Sidebar />
-              </SignedIn>
+              {showSidebar && <Sidebar />}
               <div className="w-full">{children}</div>
             </GlobalStyleProvider>
           </ContextProvider>
