@@ -30,6 +30,7 @@ export default function RootLayout({
 }>) {
 
   const { userId } = auth()
+  console.log("userid",userId)
 
   return (
     <ClerkProvider>

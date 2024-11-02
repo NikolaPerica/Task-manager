@@ -17,7 +17,6 @@ function Tasks({ title, tasks }: Props) {
 
   // Safeguard to check if tasks is an array
   const isTasksArray = Array.isArray(tasks);
-  console.log(modal)
   return (
     <TaskStyled theme={theme}>
       {/* <CreateContent /> */}
