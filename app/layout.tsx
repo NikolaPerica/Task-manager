@@ -8,7 +8,7 @@ import {
   ClerkProvider,
   SignedIn,
   SignedOut,
-  auth,
+  //auth,
 } from "@clerk/nextjs";
 import NextTopLoader from "nextjs-toploader";
 
