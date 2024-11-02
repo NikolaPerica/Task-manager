@@ -12,7 +12,6 @@ import {
   UserButton
 } from '@clerk/nextjs'
 import { auth } from "@clerk/nextjs/server";
-import { useAuth } from "@clerk/nextjs";
 import NextTopLoader from "nextjs-toploader";
 
 const nunito = Nunito({ 
@@ -31,7 +30,6 @@ export default function RootLayout({
 }>) {
 
   const { userId } = auth()
-  const { isSignedIn } = useAuth();
 
   return (
     <ClerkProvider>
@@ -49,7 +47,7 @@ export default function RootLayout({
           />
           <ContextProvider>
             <GlobalStyleProvider>
-              { isSignedIn && <Sidebar /> }
+              { userId && <Sidebar /> }
               <div className="w-full ">{children}</div>
             </GlobalStyleProvider>
           </ContextProvider>
