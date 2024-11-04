@@ -24,6 +24,28 @@ body {
   height: 100vh;
 }
 
+.cl-avatarBox {
+  width: 70px;
+  height: 70px;
+  border: transparent;
+}
+
+.cl-avatarBox:hover {
+  border: transparent;
+}
+
+.cl-avatarBox:active {
+  border: transparent;
+}
+
+.cl-userButtonTrigger:focus,
+.cl-userButtonTrigger:active {
+  outline: none; /* Remove default outline */
+  border: none; /* Remove any border */
+  box-shadow: none; /* Remove box shadow if any */
+}
+
+
 input,
 textarea,
 button {
