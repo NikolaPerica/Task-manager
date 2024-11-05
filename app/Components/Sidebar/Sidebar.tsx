@@ -26,6 +26,12 @@ function Sidebar() {
   const router = useRouter();
   const pathname = usePathname();
 
+  const handleSignOut = async () => {
+    await signOut();
+    router.push("/signin");
+    window.location.reload(); // Forces a full page reload
+  };
+
   const handleClick = (link: string) => {
     router.push(link);
   };
@@ -73,9 +79,7 @@ function Sidebar() {
           fw={"500"}
           fs={"1.2rem"}
           icon={logout}
-          click={() => {
-            signOut(() => router.push("/signin"));
-          }}
+          click={handleSignOut}
         />
       </div>
     </SidebarStyled>
